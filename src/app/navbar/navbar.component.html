@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light down">
+  <a class="navbar-brand">FoodHub</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" (click)="GoToAllFood()">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="GoToProfile()" *ngIf="isAuth">Hello {{User.DisplayName}}</a>
+      </li>
+    </ul>
+    <button class="btn btn-primary" (click)="GoToLogIn()" *ngIf="!isAuth">Log In</button>
+    <button class="btn btn-success" (click)="GoToRegister()" *ngIf="!isAuth">Register</button>
+    <button class="btn btn-danger" (click)="LogUserOut()" *ngIf="isAuth">Log out</button>
+    <button class="btn btn-danger" type="button" (click)="GoToAllRecipe()">Add Recipe</button>
+  </div>
+</nav>
