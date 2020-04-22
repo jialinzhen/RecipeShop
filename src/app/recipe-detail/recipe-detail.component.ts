@@ -9,13 +9,17 @@ import {FoodServiceClient} from '../Services/food.service.client';
 })
 export class RecipeDetailComponent implements OnInit {
   id: string;
-  RecipeDetail = {};
+  RecipeDetail = {
+    _id: ''
+  };
   CommentsForRecipe = [];
   constructor(private route: ActivatedRoute,
               public foodbackendService: FoodServiceClient,
               private router: Router) { }
   isAuth = window.localStorage.getItem('jwt-token') != null;
-  User = {};
+  User = {
+    _id: ''
+  };
   ProfilePictureUrl = '../../assets/download.jpeg';
   SaveMode = true;
   LikeMode = true;
