@@ -2,9 +2,8 @@ import {Injectable, Output} from '@angular/core';
 
 @Injectable()
 export class FoodServiceClient {
-   // local = 'http://localhost:3002/api/';
   local = '/api/';
-  AddOneRecipe = recipe => fetch(this.local + 'addrecipe', {
+  AddOneRecipe = recipe => fetch(this.local + 'recipe', {
     body: JSON.stringify(recipe),
     method: 'POST',
     headers: {
@@ -12,21 +11,21 @@ export class FoodServiceClient {
       'Authorization': 'bearer ' + window.localStorage.getItem('jwt-token')
     }
   })
-  GetAllRecipe = ()  => fetch(this.local + 'allrecipe').then(response => response.json());
-  updateOneRecipe = (id, recipe) => fetch(this.local + 'foods/' + id , {
+  GetAllRecipe = ()  => fetch(this.local + 'recipes').then(response => response.json());
+  updateOneRecipe = (id, recipe) => fetch(this.local + 'recipe/' + id , {
     body: JSON.stringify(recipe),
     method: 'PUT',
     headers: {
       'content-type' : 'application/json'
     }
   })
-  DeleteOneRecipe = (id) => fetch(this.local + 'foods/' + id , {
+  DeleteOneRecipe = (id) => fetch(this.local + 'recipe/' + id , {
     method: 'DELETE',
     headers: {
       'content-type' : 'application/json'
     }
   })
-  AddingCommentForRecipe = (comment, id) => fetch(this.local + 'foods/' + id + '/comment', {
+  AddingCommentForRecipe = (comment, id) => fetch(this.local + 'recipe/' + id + '/comment', {
     body: JSON.stringify(comment),
     method: 'POST',
     headers: {
@@ -34,20 +33,20 @@ export class FoodServiceClient {
       'Authorization': 'bearer ' + window.localStorage.getItem('jwt-token')
     }
   })
-  UpdatingCommentForRecipe = (id, comment, commentId) => fetch(this.local + 'foods/' + id + '/comment/' + commentId, {
+  UpdatingCommentForRecipe = (id, comment, commentId) => fetch(this.local + 'recipe/' + id + '/comment/' + commentId, {
     body: JSON.stringify(comment),
     method: 'PUT',
     headers: {
       'content-type' : 'application/json'
     }
   })
-  DeleteCommentForRecipe = (id, commentId) => fetch(this.local + 'foods/' + id + '/comment/' + commentId, {
+  DeleteCommentForRecipe = (id, commentId) => fetch(this.local + 'recipe/' + id + '/comment/' + commentId, {
     method: 'DELETE',
     headers: {
       'content-type' : 'application/json'
     }
   })
-  FetchSingleComment = (id, commentId) => fetch(this.local + 'foods/' + id + '/comment/' + commentId).
+  FetchSingleComment = (id, commentId) => fetch(this.local + 'recipe/' + id + '/comment/' + commentId).
   then(response => response.json())
   RegisterUserUp = (userInfo) => fetch(this.local + 'register', {
     body: JSON.stringify(userInfo),
@@ -74,7 +73,7 @@ export class FoodServiceClient {
     }
   }).then(res => res.json())
 
-  LikeARecipe = (item) => fetch(this.local + 'foods/' +
+  LikeARecipe = (item) => fetch(this.local + 'recipe/' +
   'user/like', {
     method: 'POST',
     body: JSON.stringify(item),
@@ -84,7 +83,7 @@ export class FoodServiceClient {
     }
   })
 
-  saveRecipeToUser = (saveItem) => fetch(this.local + 'foods'
+  saveRecipeToUser = (saveItem) => fetch(this.local + 'recipe'
    + '/user/save', {
     method: 'POST',
     body: JSON.stringify(saveItem),
@@ -93,17 +92,17 @@ export class FoodServiceClient {
       'Authorization': 'bearer ' + window.localStorage.getItem('jwt-token')
     }
   })
-  GetOneRecipe = (id) => fetch(this.local + 'foods/' + id).then(response => response.json());
-  FetchAllSaves = () => fetch(this.local + 'allrecipes/save').then(res => res.json());
-  FetchAllLikes = () => fetch(this.local + 'allrecipes/like').then(res => res.json());
-  deleteASave = (item) => fetch(this.local + 'allrecipes/save/', {
+  GetOneRecipe = (id) => fetch(this.local + 'recipe/' + id).then(response => response.json());
+  FetchAllSaves = () => fetch(this.local + 'recipe/save').then(res => res.json());
+  FetchAllLikes = () => fetch(this.local + 'recipe/like').then(res => res.json());
+  deleteASave = (item) => fetch(this.local + 'recipe/save/', {
     method: 'DELETE',
     body: JSON.stringify(item),
     headers: {
       'content-type' : 'application/json'
     }
   })
-  deleteALike = (item) => fetch(this.local + 'allrecipes/like/', {
+  deleteALike = (item) => fetch(this.local + 'recipe/like/', {
     method: 'DELETE',
     body: JSON.stringify(item),
     headers: {
