@@ -2,8 +2,8 @@ import {Injectable, Output} from '@angular/core';
 
 @Injectable()
 export class FoodServiceClient {
-   local = 'http://localhost:3002/api/';
-  // local = '/api/';
+   // local = 'http://localhost:3002/api/';
+  local = '/api/';
   AddOneRecipe = recipe => fetch(this.local + 'addrecipe', {
     body: JSON.stringify(recipe),
     method: 'POST',
