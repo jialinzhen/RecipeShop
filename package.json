@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --output-path dist",
+    "preinstall": "npm install -g angular-cli"
   },
   "private": true,
   "dependencies": {
@@ -34,12 +36,13 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "mongoose": "^5.3.15",
-    "passport-local-mongoose": "^5.0.1"
+    "mongodb": "^3.1.1",
+    "passport-local-mongoose": "^5.0.1",
+    "@angular/cli": "~7.1.0",
+    "@angular/compiler-cli": "~7.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.11.0",
-    "@angular/cli": "~7.1.0",
-    "@angular/compiler-cli": "~7.1.0",
     "@angular/language-service": "~7.1.0",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
